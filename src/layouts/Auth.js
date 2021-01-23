@@ -17,6 +17,7 @@ import login from "assets/img/login.jpeg";
 import lock from "assets/img/lock.jpeg";
 import error from "assets/img/clint-mckoy.jpg";
 import pricing from "assets/img/bg-pricing.jpeg";
+import team from "assets/img/team.jpeg"
 
 const useStyles = makeStyles(styles);
 
@@ -60,6 +61,10 @@ export default function Pages(props) {
       window.location.pathname.indexOf("/auth/lock-screen-page") !== -1
     ) {
       return lock;
+    } else if (
+      window.location.pathname.indexOf("/auth/team") !== -1
+    ) {
+      return team
     } else if (window.location.pathname.indexOf("/auth/error-page") !== -1) {
       return error;
     }

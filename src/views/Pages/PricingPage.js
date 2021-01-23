@@ -30,6 +30,7 @@ export default function PricingPage() {
           <h2 className={classes.title}>Pick the best plan for you</h2>
           <h5 className={classes.description}>
             You have Free Unlimited Updates and Premium Support on each package.
+            All your personal data will remain secure and confidential.
           </h5>
         </GridItem>
       </GridContainer>
@@ -37,17 +38,18 @@ export default function PricingPage() {
         <GridItem xs={12} sm={12} md={3}>
           <Card pricing plain>
             <CardBody pricing plain>
-              <h6 className={classes.cardCategory}>Freelancer</h6>
+              <h6 className={classes.cardCategory}>Discover</h6>
               <div className={classes.icon}>
                 <Icon className={classes.iconWhite}>weekend</Icon>
               </div>
               <h3
                 className={`${classes.cardTitleWhite} ${classes.marginTop30}`}
               >
-                FREE
+                 FREE
               </h3>
-              <p className={classes.cardCategory}>
-                This is good if your company size is between 2 and 10 Persons.
+              <p className={classes.cardCategoryWhite}>
+                Try our offer for free during 1 month !
+                Up to 5 GB of free storage.
               </p>
               <Button round color="white">
                 Choose plan
@@ -63,10 +65,10 @@ export default function PricingPage() {
                 <Home className={classes.iconRose} />
               </div>
               <h3 className={`${classes.cardTitle} ${classes.marginTop30}`}>
-                $29
+                $9 /month
               </h3>
               <p className={classes.cardDescription}>
-                This is good if your company size is between 2 and 10 Persons.
+                This is good if you manage less than 20 properties.
               </p>
               <Button round color="rose">
                 Choose plan
@@ -84,31 +86,10 @@ export default function PricingPage() {
               <h3
                 className={`${classes.cardTitleWhite} ${classes.marginTop30}`}
               >
-                $69
+                $29 /month
               </h3>
-              <p className={classes.cardCategory}>
-                This is good if your company size is between 11 and 99 Persons.
-              </p>
-              <Button round color="white">
-                Choose plan
-              </Button>
-            </CardBody>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={3}>
-          <Card pricing plain>
-            <CardBody pricing plain>
-              <h6 className={classes.cardCategory}>ENTERPRISE</h6>
-              <div className={classes.icon}>
-                <AccountBalance className={classes.iconWhite} />
-              </div>
-              <h3
-                className={`${classes.cardTitleWhite} ${classes.marginTop30}`}
-              >
-                $159
-              </h3>
-              <p className={classes.cardCategory}>
-                This is good if your company size is 99+ persons.
+              <p className={classes.cardCategoryWhite}>
+                This is good if you manage more than 20 properties.
               </p>
               <Button round color="white">
                 Choose plan

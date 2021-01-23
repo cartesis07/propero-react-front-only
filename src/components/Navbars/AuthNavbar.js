@@ -121,15 +121,15 @@ export default function AuthNavbar(props) {
       <Toolbar className={classes.container}>
         <Hidden smDown>
           <div className={classes.flex}>
-            <Button href="#" className={classes.title} color="transparent">
-              {brandText}
+            <Button href="/" className={classes.title} color="transparent">
+              Propero
             </Button>
           </div>
         </Hidden>
         <Hidden mdUp>
           <div className={classes.flex}>
-            <Button href="#" className={classes.title} color="transparent">
-              MD Pro React
+            <Button href="/" className={classes.title} color="transparent">
+              Propero
             </Button>
           </div>
         </Hidden>

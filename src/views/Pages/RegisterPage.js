@@ -9,7 +9,7 @@ import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
 import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
+import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Group from "@material-ui/icons/Group";
 import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
@@ -53,20 +53,20 @@ export default function RegisterPage() {
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={5}>
                   <InfoArea
-                    title="Marketing"
-                    description="We've created the marketing campaign of the website. It was a very interesting collaboration."
+                    title="Analytics"
+                    description="Persistent and in-depth analyzes about your rentals."
                     icon={Timeline}
                     iconColor="rose"
                   />
                   <InfoArea
-                    title="Fully Coded in HTML5"
-                    description="We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."
-                    icon={Code}
+                    title="Easy-to-use"
+                    description="The most easy-to-use solution to manage your properties. Responsive web design & Full Cloud."
+                    icon={BlurOnIcon}
                     iconColor="primary"
                   />
                   <InfoArea
-                    title="Built Audience"
-                    description="There is also a Fully Customizable CMS Admin Dashboard for this product."
+                    title="Connect with your tenants"
+                    description="Fully implemented notifications system and payment tools."
                     icon={Group}
                     iconColor="info"
                   />

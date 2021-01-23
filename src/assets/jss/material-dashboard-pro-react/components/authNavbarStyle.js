@@ -44,7 +44,7 @@ const pagesHeaderStyle = theme => ({
   title: {
     ...defaultFont,
     lineHeight: "30px",
-    fontSize: "18px",
+    fontSize: "30px",
     borderRadius: "3px",
     textTransform: "none",
     color: whiteColor,
