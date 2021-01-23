@@ -9,6 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
+// boostrap components
+import SweetAlert from "react-bootstrap-sweetalert";
+
 // @material-ui/icons
 // import ContentCopy from "@material-ui/icons/ContentCopy";
 import Store from "@material-ui/icons/Store";
@@ -20,7 +23,7 @@ import Update from "@material-ui/icons/Update";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AccessTime from "@material-ui/icons/AccessTime";
 import Refresh from "@material-ui/icons/Refresh";
-import Edit from "@material-ui/icons/Edit";
+import Delete from "@material-ui/icons/Delete";
 import Place from "@material-ui/icons/Place";
 import ArtTrack from "@material-ui/icons/ArtTrack";
 import Language from "@material-ui/icons/Language";
@@ -44,6 +47,7 @@ import {
 } from "variables/charts";
 
 import styles from "assets/jss/material-dashboard-pro-react/views/dashboardStyle.js";
+import alert_styles from "assets/jss/material-dashboard-pro-react/views/sweetAlertStyle.js";
 
 import priceImage1 from "assets/img/card-2.jpeg";
 import priceImage2 from "assets/img/card-3.jpeg";
@@ -71,9 +75,65 @@ var mapData = {
 };
 
 const useStyles = makeStyles(styles);
+const useAlertStyles = makeStyles(alert_styles);
+
 
 export default function Dashboard() {
   const classes = useStyles();
+  const alertclasses = useAlertStyles();
+  const [alert, setAlert] = React.useState(null);
+
+  const successDelete = () => {
+    setAlert(
+      <SweetAlert
+        success
+        style={{ display: "block", marginTop: "-100px" }}
+        title="Deleted!"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={alertclasses.button + " " + alertclasses.success}
+      >
+        Your imaginary file has been deleted.
+      </SweetAlert>
+    );
+  };
+  const cancelDetele = () => {
+    setAlert(
+      <SweetAlert
+        danger
+        style={{ display: "block", marginTop: "-100px" }}
+        title="Cancelled"
+        onConfirm={() => hideAlert()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={alertclasses.button + " " + alertclasses.success}
+      >
+        Your imaginary file is safe :)
+      </SweetAlert>
+    );
+  };
+  const hideAlert = () => {
+    setAlert(null);
+  };
+
+  const warningWithConfirmMessage = () => {
+    setAlert(
+      <SweetAlert
+        warning
+        style={{ display: "block", marginTop: "-100px" }}
+        title="Are you sure?"
+        onConfirm={() => successDelete()}
+        onCancel={() => hideAlert()}
+        confirmBtnCssClass={alertclasses.button + " " + alertclasses.success}
+        cancelBtnCssClass={alertclasses.button + " " + alertclasses.danger}
+        confirmBtnText="Yes, delete it!"
+        cancelBtnText="Cancel"
+        showCancel
+      >
+        You will not be able to recover this imaginary file!
+      </SweetAlert>
+    );
+  };
+
   return (
     <div>
       <GridContainer>
@@ -153,96 +213,6 @@ export default function Dashboard() {
         </GridItem>
       </GridContainer>
       <GridContainer>
-        <GridItem xs={12}>
-          <Card>
-            <CardHeader color="success" icon>
-              <CardIcon color="success">
-                <Language />
-              </CardIcon>
-              <h4 className={classes.cardIconTitle}>
-                Global Sales by Top Locations
-              </h4>
-            </CardHeader>
-            <CardBody>
-              <GridContainer justify="space-between">
-                <GridItem xs={12} sm={12} md={5}>
-                  <Table
-                    tableData={[
-                      [
-                        <img src={us_flag} alt="us_flag" key={"flag"} />,
-                        "USA",
-                        "2.920",
-                        "53.23%"
-                      ],
-                      [
-                        <img src={de_flag} alt="us_flag" key={"flag"} />,
-                        "Germany",
-                        "1.300",
-                        "20.43%"
-                      ],
-                      [
-                        <img src={au_flag} alt="us_flag" key={"flag"} />,
-                        "Australia",
-                        "760",
-                        "10.35%"
-                      ],
-                      [
-                        <img src={gb_flag} alt="us_flag" key={"flag"} />,
-                        "United Kingdom",
-                        "690",
-                        "7.87%"
-                      ],
-                      [
-                        <img src={ro_flag} alt="us_flag" key={"flag"} />,
-                        "Romania",
-                        "600",
-                        "5.94%"
-                      ],
-                      [
-                        <img src={br_flag} alt="us_flag" key={"flag"} />,
-                        "Brasil",
-                        "550",
-                        "4.34%"
-                      ]
-                    ]}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <VectorMap
-                    map={"world_mill"}
-                    backgroundColor="transparent"
-                    zoomOnScroll={false}
-                    containerStyle={{
-                      width: "100%",
-                      height: "280px"
-                    }}
-                    containerClassName="map"
-                    regionStyle={{
-                      initial: {
-                        fill: "#e4e4e4",
-                        "fill-opacity": 0.9,
-                        stroke: "none",
-                        "stroke-width": 0,
-                        "stroke-opacity": 0
-                      }
-                    }}
-                    series={{
-                      regions: [
-                        {
-                          values: mapData,
-                          scale: ["#AAAAAA", "#444444"],
-                          normalizeFunction: "polynomial"
-                        }
-                      ]
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer>
-      <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card chart className={classes.cardHover}>
             <CardHeader color="info" className={classes.cardHeaderHover}>
@@ -273,7 +243,7 @@ export default function Dashboard() {
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <Delete className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -323,7 +293,7 @@ export default function Dashboard() {
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <Delete className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -367,7 +337,7 @@ export default function Dashboard() {
                   classes={{ tooltip: classes.tooltip }}
                 >
                   <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <Delete className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -382,8 +352,9 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      <h3>Manage Listings</h3>
+      <h3>Manage Your Properties</h3>
       <br />
+      {alert}
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card product className={classes.cardHover}>
@@ -406,7 +377,7 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Edit"
+                  title="Refresh"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
@@ -416,12 +387,13 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Remove"
+                  title="Delete"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
+                  onClick={warningWithConfirmMessage}
                 >
                   <Button color="danger" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <Delete className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -438,7 +410,7 @@ export default function Dashboard() {
             </CardBody>
             <CardFooter product>
               <div className={classes.price}>
-                <h4>$899/night</h4>
+                <h4>$899/month</h4>
               </div>
               <div className={`${classes.stats} ${classes.productStats}`}>
                 <Place /> Barcelona, Spain
@@ -467,7 +439,7 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Edit"
+                  title="Refresh"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
@@ -477,12 +449,13 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Remove"
+                  title="Delete"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
+                  onClick={warningWithConfirmMessage}
                 >
                   <Button color="danger" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <Delete className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -499,7 +472,7 @@ export default function Dashboard() {
             </CardBody>
             <CardFooter product>
               <div className={classes.price}>
-                <h4>$1.119/night</h4>
+                <h4>$1,119/month</h4>
               </div>
               <div className={`${classes.stats} ${classes.productStats}`}>
                 <Place /> London, UK
@@ -528,7 +501,7 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Edit"
+                  title="Refresh"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
                 >
@@ -538,12 +511,13 @@ export default function Dashboard() {
                 </Tooltip>
                 <Tooltip
                   id="tooltip-top"
-                  title="Remove"
+                  title="Delete"
                   placement="bottom"
                   classes={{ tooltip: classes.tooltip }}
+                  onClick={warningWithConfirmMessage}
                 >
                   <Button color="danger" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
+                    <Delete className={classes.underChartIcons} />
                   </Button>
                 </Tooltip>
               </div>
@@ -560,7 +534,7 @@ export default function Dashboard() {
             </CardBody>
             <CardFooter product>
               <div className={classes.price}>
-                <h4>$459/night</h4>
+                <h4>$459/month</h4>
               </div>
               <div className={`${classes.stats} ${classes.productStats}`}>
                 <Place /> Milan, Italy

@@ -72,23 +72,10 @@ export default function Calendar() {
     <div>
       <Heading
         textAlign="center"
-        title="React Big Calendar"
+        title="Your calendar"
         category={
           <span>
-            A beautiful react component made by{" "}
-            <a
-              href="https://github.com/intljusticemission?ref=creativetim"
-              target="_blank"
-            >
-              International Justice Mission
-            </a>
-            . Please checkout their{" "}
-            <a
-              href="https://github.com/intljusticemission/react-big-calendar?ref=creativetim"
-              target="_blank"
-            >
-              full documentation.
-            </a>
+            Manage your visits, your payments as well as your inventories.
           </span>
         }
       />

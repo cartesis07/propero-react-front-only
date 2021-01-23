@@ -77,8 +77,8 @@ export default function RegisterPage() {
                       <i className="fab fa-twitter" />
                     </Button>
                     {` `}
-                    <Button justIcon round color="dribbble">
-                      <i className="fab fa-dribbble" />
+                    <Button justIcon round color="google">
+                      <i className="fab fa-google" />
                     </Button>
                     {` `}
                     <Button justIcon round color="facebook">
